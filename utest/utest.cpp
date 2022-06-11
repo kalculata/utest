@@ -3,33 +3,46 @@
 
 void UTEST::ASSERT_EQUAL(int a, int b, std::string message){
 	this->counter++;
+	std::string notice;
+
 	std::cout << "--------------------------------------- TEST " << this->counter << " ---------------------------------------\n";
 
 	if (a != b) {
-		std::cout << "[FAILED]: " << a << " != " << b << "\n";
+		if (!message.empty())
+			notice = " ( " + message + " )";
+		else
+			notice = "";
+
+		std::cout << "[FAILED]: " << a << " != " << b << notice << "\n";
 		this->failed_test++;
 	}
 	else {
-		std::cout << "[PASS]: " << a << " == " << b << "\n";
+		std::cout << "[PASS]\n";
 		this->passed_test++;
 	}
-	std::cout << "--------------------------------------------------------------------------------------\n";
 }
 
 void UTEST::ASSERT_EQUAL(int& a, int& b, std::string message){
 	this->counter++;
+	std::string notice;
+
+
 	std::cout << "--------------------------------------- TEST " << this->counter << " ---------------------------------------\n";
 
 	if (a != b) {
-		std::cout << "[FAILED]: " << a << " != " << b << "\n";
+		if (!message.empty())
+			notice = " ( " + message + " )";
+		else
+			notice = "";
+
+		std::cout << "[FAILED]: " << a << " != " << b << notice << "\n" ;
 		this->failed_test++;
 	}
 
 	else {
-		std::cout << "[PASS]: " << a << " == " << b << "\n";
+		std::cout << "[PASS]\n";
 		this->passed_test++;
 	}
-	std::cout << "-----------------------------------------------------------------------------\n";
 }
 
 void UTEST::report() {
